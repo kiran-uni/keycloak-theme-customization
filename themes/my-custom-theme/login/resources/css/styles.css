@@ -1,0 +1,98 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Inter, sans-serif;
+    font-size: 1rem;
+}
+
+body {
+    background: white;
+    position: relative;
+    min-height: 100vh;
+}
+
+/*variables*/
+:root {
+    --primary: #1C77F2;
+}
+
+section.kc-intro-section {
+    position: absolute;
+    top: 0;
+    left: 35%;
+    width: 30%;
+    height: 100%;
+
+    background-color: var(--primary);
+    color: white;
+}
+section.kc-intro-section h1 {
+    position: absolute;
+    top: 20%;
+    left: 30%;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+section.kc-intro-section h3 {
+    position: absolute;
+    top: 25%;
+    left: 30%;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+#kc-header {
+    display: none;
+}
+
+header.kc-form-header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 1rem;
+}
+
+header.kc-form-header h5 {
+    margin: 0;
+}
+
+header.kc-form-header img {
+    border-radius: 8px;
+    height: 60px;
+    width: 120px;
+}
+
+.kc-login {
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+}
+
+.kc-login .kc-form-card {
+    position: absolute;
+    top: 53%;
+    left: 60.5%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    border-radius: 24px;
+    background: white;
+    padding: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.kc-login .kc-form-group {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.kc-login .kc-form-group input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 100%;
+}
+

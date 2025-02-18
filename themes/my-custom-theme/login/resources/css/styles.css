@@ -1,9 +1,10 @@
+/* Global Styles */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: Inter, sans-serif;
-    font-size: 1rem;
+    font-size: var(--font-default);
 }
 
 body {
@@ -15,27 +16,31 @@ body {
 :root {
     --primary: #1C77F2;
     --banner-width: 400px;
-    --card-width: 500px;
+    --card-width: 450px;
+    --error: #FF0000;
+    --info: #626262;
+    --font-xl: 2rem;
+    --font-lg: 1.5rem;
+    --font-default: 1rem;
+    --font-sm: 0.875rem;
+    --font-xs: 0.75rem;
 }
 
+/* Intro Section */
 section.kc-intro-section {
     position: absolute;
     top: 0;
-
     width: 100%;
     height: 100%;
-
     background-color: var(--primary);
     color: white;
 }
-
-
 
 section.kc-intro-section h1 {
     position: absolute;
     top: 20%;
     left: 30%;
-    font-size: 2rem;
+    font-size: var(--font-xl);
     font-weight: 700;
 }
 
@@ -43,105 +48,12 @@ section.kc-intro-section h3 {
     position: absolute;
     top: 25%;
     left: 30%;
-    font-size: 1.5rem;
+    font-size: var(--font-lg);
     font-weight: 500;
 }
 
 #kc-header {
     display: none;
-}
-
-.kc-login {
-    height: 100%;
-    width: 100%;
-    min-height: 100vh;
-    position: relative;
-}
-
-.kc-login .kc-form-card {
-    position: absolute;
-    width: 100%;
-    max-width: var(--card-width);
-
-    border-radius: 24px;
-    background: white;
-    padding: 2rem;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-@media only screen and (min-width: 800px) {
-    section.kc-intro-section {
-        top: 0;
-        left: 30%;
-        max-width: var(--banner-width)
-    }
-    .kc-login .kc-form-card {
-        top: 30%;
-        left: calc(30% + 120px);
-    }
-}
-
-@media only screen and (max-width: 800px) {
-    .section.kc-intro-section {
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-
-    .kc-login .kc-form-card {
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-    }
-}
-
-header.kc-form-header {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    margin-bottom: 2rem;
-}
-
-header.kc-form-header h5 {
-    margin: 0;
-}
-
-header.kc-form-header img {
-    border-radius: 8px;
-    height: 60px;
-    width: 120px;
-}
-
-.kc-login .kc-form-group {
-    margin-bottom: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-}
-
-.kc-login .kc-form-group label {
-    font-size: .875rem;
-    font-weight: 500;
-}
-
-.kc-login .kc-form-group input[type="text"], .kc-login .kc-form-group input[type="password"] {
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 100%;
-}
-
-.kc-login .kc-form-group:nth-child(3) {
-    flex-direction: row;
-    width: 100%;
-    justify-content: space-between;
-    padding-top: 1rem;
-}
-
-#kc-form-options .checkbox label {
-    display: flex;
-    align-items: center;
-    gap: .5rem;
 }
 
 .kc-branding {
@@ -153,51 +65,109 @@ header.kc-form-header img {
     background-size: contain;
 }
 
-#kc-form-options input[type="checkbox"] {
-    height: 16px;
-    width: 16px;
-}
-
-.kc-login form a {
-    color: var(--primary);
-    text-decoration: none;
-    font-size: .875rem;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-#kc-form-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding-block: .7rem;
-    margin-bottom: 0;
-}
-
-#kc-form-buttons input[type="submit"] {
-    background-color: var(--primary);
-    color: white;
-    padding: .7rem;
-    border: none;
-    border-radius: 24px;
-    cursor: pointer;
-}
-
-.kc-form-group div[dir="ltr"] {
-    /*display: flex;*/
-    /*align-items: center;*/
-    /*gap: .5rem;*/
+/* Login Form Styles */
+.kc-login {
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
     position: relative;
 }
 
+.kc-login .kc-form-card {
+    position: absolute;
+    width: 100%;
+    max-width: var(--card-width);
+    border-radius: 24px;
+    background: white;
+    padding: 2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Layout */
+@media only screen and (min-width: 800px) {
+    section.kc-intro-section {
+        left: 30%;
+        max-width: var(--banner-width);
+    }
+    .kc-login .kc-form-card {
+        top: 30%;
+        left: calc(30% + 120px);
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    section.kc-intro-section,
+    .kc-login .kc-form-card {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* Form Header */
+header.kc-form-header {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 2rem;
+}
+header.kc-form-header h5 {
+    /*font-size: 1rem;*/
+    font-weight: 500;
+}
+
+header.kc-form-header img {
+    border-radius: 8px;
+    height: 60px;
+    width: 120px;
+}
+
+/* Form Group */
+.kc-login .kc-form-group {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.kc-login .kc-form-group label {
+    font-size: var(--font-sm);
+    font-weight: 500;
+}
+
+.kc-login .kc-form-group:nth-child(3) {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1rem;
+}
+
+/* Input Styles */
+.kc-login .kc-form-group input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    transition: all 0.2s ease;
+}
+
+.kc-login .kc-form-group input:focus {
+    border-color: var(--primary);
+    outline: 1px solid var(--primary);
+}
+
+.kc-login .kc-form-group input[aria-invalid="true"] {
+    border-color: var(--error) !important;
+    outline-color: var(--error) !important;
+}
+
+/* Password Visibility Button */
 .kc-form-password-visibility-button {
     background: none;
     border: none;
     cursor: pointer;
     position: absolute;
-    right: .5rem;
+    right: 0.5rem;
     top: 50%;
     transform: translateY(-50%);
     width: 28px;
@@ -208,59 +178,7 @@ a:hover {
     background-color: #f1f1f1;
 }
 
-#kc-social-providers {
-    display: flex;
-    flex-direction: column;
-    gap: .7rem;
-    width: 100%;
-    margin-bottom: 1rem;
-}
-#kc-social-providers hr {
-    display: none;
-}
-#kc-social-providers h2 {
-    font-weight: 400;
-    font-size: 1rem;
-    text-align: center;
-    color: #494949;
-}
-#kc-social-providers ul {
-    list-style: none;
-}
-
-#kc-social-providers ul li {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-
-    border: 1px solid var(--primary);
-    border-radius: 24px;
-    padding: .7rem;
-}
-#kc-social-providers ul li a {
-    width: 100%;
-    height: 100%;
-    text-decoration: none;
-    color: var(--primary);
-    text-align: center;
-    position: relative;
-    font-weight: 500;
-}
-#kc-social-providers ul li a span {
-    font-weight: inherit;
-}
-a#social-google::before {
-    content: url("../img/googleIcon.svg");
-
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-
-    width: 24px;
-    height: 24px;
-}
-
+/* Buttons */
 button, a {
     transition: all 0.2s ease;
 }
@@ -269,9 +187,104 @@ button {
     font-weight: 500;
 }
 
+a {
+    text-decoration: none;
+    color: var(--primary);
+}
+
+button:focus, a:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 1px;
+}
+
+#kc-form-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-block: 0.7rem;
+    margin-bottom: 0;
+}
+
+#kc-form-buttons input[type="submit"] {
+    background-color: var(--primary);
+    color: white;
+    padding: 0.7rem;
+    border: none;
+    border-radius: 24px;
+    cursor: pointer;
+}
+
+/* Social Providers */
+#kc-social-providers {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    width: 100%;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+#kc-social-providers h2 {
+    font-weight: 400;
+    font-size: var(--font-sm);
+    color: #494949;
+}
+
+#kc-social-providers ul {
+    list-style: none;
+}
+
+#kc-social-providers ul li {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    border: 1px solid var(--primary);
+    border-radius: 24px;
+    padding: 0.7rem;
+}
+
+#kc-social-providers ul li a {
+    width: 100%;
+    text-decoration: none;
+    color: var(--primary);
+    font-weight: 500;
+    text-align: center;
+    position: relative;
+}
+
+/* Registration Section */
 #kc-registration {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     margin-top: 1.5rem;
+    color: #494949;
+    font-size: var(--font-sm);
+}
+
+/* Footer */
+.kc-footer-section {
+    position: absolute;
+    top: 78%;
+    left: calc(30% + 120px);
+    width: 100%;
+    color: white;
+}
+
+.kc-footer-section span, .kc-footer-section a {
+    font-size: var(--font-xs);
+    color: white;
+    font-weight: 500;
+}
+.kc-footer-section a:hover {
+    text-decoration: underline;
+}
+.kc-footer-section i {
+    font-size: .3rem;
+}
+.kc-footer-section .kc-footer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: fit-content;
 }
